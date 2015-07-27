@@ -17,7 +17,7 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
-  <run_depend>avgs_description</run_depend>
+  <run_depend>agvs_description</run_depend>
   <run_depend>agvs_pad</run_depend>
 
   <export>
