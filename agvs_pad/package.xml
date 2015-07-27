@@ -21,7 +21,6 @@
   <build_depend>std_msgs</build_depend>
   <build_depend>sensor_msgs</build_depend>
 
-  <build_depend>agvs_robot_control</build_depend> 
   <build_depend>diagnostic_msgs</build_depend>
   <build_depend>diagnostic_updater</build_depend>
   <build_depend>robotnik_msgs</build_depend>
@@ -31,7 +30,6 @@
   <run_depend>geometry_msgs</run_depend>
   <run_depend>std_msgs</run_depend>
   <run_depend>sensor_msgs</run_depend>
-  <run_depend>agvs_robot_control</run_depend>
   <run_depend>diagnostic_msgs</run_depend>
   <run_depend>diagnostic_updater</run_depend>
   <run_depend>robotnik_msgs</run_depend>
