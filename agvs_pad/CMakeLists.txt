@@ -42,3 +42,7 @@ target_link_libraries(agvs_pad_node
    ${catkin_LIBRARIES}
  )
 
+install(
+  TARGETS agvs_pad_node
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
