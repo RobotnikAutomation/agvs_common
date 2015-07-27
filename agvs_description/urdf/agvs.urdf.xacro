@@ -29,11 +29,7 @@
 
 
   <!-- Used for fixing robot to Gazebo 'base_link' -->
-  <!-- link name="world"/>
-  <joint name="fwf" type="planar">
-    <parent link="world"/>
-    <child link="base_footprint"/>
-  </joint -->
+ 
 
   <!-- BASE FOOTPRINT -->
   <!-- base_footprint is a fictitious link(frame) that is on the ground right below base_link origin,
@@ -45,13 +41,6 @@
              <box size="0.001 0.001 0.001" />
           </geometry>
       </visual>
-
-      <!--collision>
-          <origin xyz="0 0 0" rpy="0 0 0" />
-          <geometry>
-            <box size="0.001 0.001 0.001" />
-         </geometry>
-     </collision -->
   </link>
 
   <joint name="base_footprint_joint" type="fixed">
@@ -453,6 +442,25 @@
         </geometry>
       </collision>
   </link>
+  
+   <!-- LOGO -->
+   <link name="logo_link">		
+		<visual>
+		   <origin xyz="0.0 0 0.0" rpy="0 0 0" /> 
+		   <geometry>
+			 <mesh filename="package://agvs_description/meshes/agvs_logos.dae"/>
+		   </geometry>
+		   <material name="red">
+			 <color rgba="0.8 0.1 0.1 1"/>
+		   </material>
+		</visual>
+	</link>
+
+	<joint name="logo_joint" type="fixed">
+		<parent link="elevator_link"/>
+		<child link="logo_link"/>
+		<origin xyz="0.075 0 0.245" rpy="1.57 0 0" /> 
+	</joint>
 
 </robot>
 
