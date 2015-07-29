@@ -20,6 +20,5 @@
   <run_depend>agvs_description</run_depend>
   <run_depend>agvs_pad</run_depend>
 
-  <export>
-  </export>
+  <export><metapackage/></export>
 </package>
