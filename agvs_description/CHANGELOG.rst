@@ -2,8 +2,8 @@
 Changelog for package agvs_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.1 (2015-07-29)
+------------------
 * Fixing repositories in package.xml files
 * agvs_description: modifying model colors
 * Preparing repo for release

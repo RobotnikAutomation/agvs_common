@@ -2,8 +2,8 @@
 Changelog for package agvs_common
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.1 (2015-07-29)
+------------------
 * agvs_common: Adding options for metapackages
 * Fixing repositories in package.xml files
 * Corrected dependency name
