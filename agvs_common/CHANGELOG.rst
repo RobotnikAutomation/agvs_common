@@ -2,8 +2,14 @@
 Changelog for package agvs_common
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.1.1 (2015-07-29)
-------------------
+Forthcoming
+-----------
+
+0.1.2 (2016-07-04 08:14:57 +0200)
+---------------------------------
+* Fixed errata
+* indigo-0.1.1
+* Adding new CHANGELOGS
 * agvs_common: Adding options for metapackages
 * Fixing repositories in package.xml files
 * Corrected dependency name
@@ -13,4 +19,4 @@ Changelog for package agvs_common
 * Update CMakeLists.txt
 * Update package.xml
 * First indigo version commit
-* Contributors: Elena Gambaro, ElenaFG, RomanRobotnik
+* Contributors: Carlos Villar, Elena Gambaro, ElenaFG, RomanRobotnik
