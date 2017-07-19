@@ -65,6 +65,8 @@
 #define DEFAULT_AXIS_ANGULAR		0	
 #define DEFAULT_SCALE_LINEAR		1.0
 #define DEFAULT_SCALE_ANGULAR		1.0
+// ignores joy msgs with old stamps 
+#define DEFAULT_JOY_TIMEOUT			0.5
 
 
 #define DEFAULT_JOY			"/joy"
@@ -346,14 +348,17 @@ bool AgvsPad::EnableDisable(robotnik_msgs::enable_disable::Request &req, robotni
 
 void AgvsPad::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
 {
-	
-	// First joystick being saved
-	for(int i = 0; i < joy->axes.size(); i++){
-		this->fAxes[i] = joy->axes[i];
-	}
-	for(int i = 0; i < joy->buttons.size(); i++){
-		this->vButtons[i].Press(joy->buttons[i]);
-	}
+	double t_diff = (ros::Time::now() - joy->header.stamp).toSec();
+	if( t_diff <= DEFAULT_JOY_TIMEOUT){
+		// First joystick being saved
+		for(int i = 0; i < joy->axes.size(); i++){
+			this->fAxes[i] = joy->axes[i];
+		}
+		for(int i = 0; i < joy->buttons.size(); i++){
+			this->vButtons[i].Press(joy->buttons[i]);
+		}
+	}else
+		ROS_WARN("AgvsPad::joyCallback: %.3lf secs of diff. Ignoring command", t_diff);
 	
 	//ROS_INFO("AgvsPad::joyCallback: num_of_axes = %d, buttons = %d", (int)(joy->axes.size()), (int)(joy->buttons.size()));
 }
