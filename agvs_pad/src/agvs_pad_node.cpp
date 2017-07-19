@@ -319,16 +319,7 @@ void AgvsPad::Update(){
 
 //! 
 void AgvsPad::PublishState(){
-	/*agvs_pad::rescuer_pad_state pad_state;
 	
-	
-	pad_state.state = StateToString(iState);
-	pad_state.arm_mode = ModeToString(iArmMode);
-	pad_state.platform_mode = ModeToString(iPlatformMode);
-	pad_state.speed_level = current_speed_lvl;
-	pad_state.deadman_active = (bool) vButtons[button_dead_man_].IsPressed();
-	
-	state_pub_.publish(pad_state);*/
 	
 }
 
@@ -404,7 +395,16 @@ void AgvsPad::ControlLoop(){
 					if(current_speed_lvl < 0.0)
 						current_speed_lvl = 0.0;
 				}				
-				
+				if (vButtons[button_up_car_].IsReleased()){
+					std_srvs::Empty empty_srv;
+					raise_elevator_client_.call( empty_srv );
+					ROS_INFO("AgvsPad::ControlLoop: Raise elevator");
+				}
+				if (vButtons[button_down_car_].IsReleased()){
+					std_srvs::Empty empty_srv;
+					lower_elevator_client_.call( empty_srv );
+					ROS_INFO("AgvsPad::ControlLoop: Lower elevator");
+				}
 							
 			}else if(vButtons[button_dead_man_].IsReleased()){
 				ref_msg.header.stamp = ros::Time::now();
@@ -417,16 +417,7 @@ void AgvsPad::ControlLoop(){
 				//ROS_INFO("AgvsPad::ControlLoop: Deadman released!");
 				vel_pub_.publish(ref_msg);// Publish into command_vel topic
 			}
-			if (vButtons[button_up_car_].IsReleased()){
-				std_srvs::Empty empty_srv;
-				raise_elevator_client_.call( empty_srv );
-				ROS_INFO("Raise elevator");
-			}
-			if (vButtons[button_down_car_].IsReleased()){
-				std_srvs::Empty empty_srv;
-				lower_elevator_client_.call( empty_srv );
-				ROS_INFO("Lower elevator");
-			}
+			
 		}
 		
 		ros::spinOnce();
